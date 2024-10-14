@@ -1,0 +1,152 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gbottieng}
+
+%\RequirePackage[italian]{babel}
+%\RequirePackage{natbib} OLD bibliography package
+%\bibliographystyle{plain} %Rimettere per ordine alfabetico
+%\DeclareUnicodeCharacter{223C}{\sim}
+%\DeclareUnicodeCharacter{}{\sim}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath} %Caratteri
+\RequirePackage{amsthm} %Caratteri
+\RequirePackage{mathrsfs} %Caratteri
+%%% UNITA' DI MISURA
+% \SI{}{} \si{} \num
+\RequirePackage{siunitx} %Unità di misura
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \cal{cal} 
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \arbitrary{arb.u.} 
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \deg{deg} 
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \atmosphere{atm}
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \atomicunittime{aut} 
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \atomicunit{au}
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \angstrom{\text{Å}}
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \hartree{\text{\ensuremath{E}}_{\mathrm{h}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{multirow} %tabelle
+\RequirePackage{amsfonts} %fonts
+\RequirePackage{dsfont} %fonts
+\RequirePackage{pgfplots} %Grafici con PGFPLOTS
+\RequirePackage{chemfig} %Formule di struttura per chimica
+\RequirePackage[version=3]{mhchem} %\ce{H2O} formule brute
+\RequirePackage{caption} %boh
+\RequirePackage{epigraph} %Per fare epigrafi?
+\RequirePackage{makeidx} %Indice analitico
+\RequirePackage{changepage} %\begin{adjustwidth}{*cm}{*cm}
+%\RequirePackage[title]{appendix} %creare appendici
+\RequirePackage{wesu} %Sutterlin \wesu
+\RequirePackage{pgothic} %Gothic Textura Prescius \pgothfamily
+\usepackage{humanist} %umanista \hminfamily
+\RequirePackage{carolmin} %minuscola carolina \cminfamily
+\RequirePackage{inslrmin} %minuscola insulare \iminfamily
+\RequirePackage[T1]{fontenc} %per i font sopra
+\RequirePackage{listings} %per fargli scrivere il codice dei programmi
+%\RequirePackage[a4paper, top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry}
+\RequirePackage{geometry} %Forza le dimensioni del paper
+%%% BRAKET
+\RequirePackage{mathtools}
+   \DeclarePairedDelimiter\bra{\langle}{\rvert}
+   \DeclarePairedDelimiter\ket{\lvert}{\rangle}
+   \DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1 \delimsize\vert #2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[section]{placeins} %Evita che le figure vadano fuori sezione
+\RequirePackage[colorlinks=true,linkcolor=blue,citecolor=green,linktocpage=true]{hyperref} %hyperlink
+%\addto\extrasenglish{
+    \def\sectionautorefname{Section}
+%} %Usa "Sezione" anziché "sezione"
+%%%QUI PER ORDINE DI APPARIZIONE
+\RequirePackage[backend=biber,style=chem-acs,sorting=none]{biblatex}
+\RequirePackage{csquotes}
+\addbibresource{export.bib}
+%\addbibresource{bibliografia.bib}
+%%% BELLE TABELLE
+% https://people.inf.ethz.ch/markusp/teaching/guides/guide-tables.pdf
+\RequirePackage{booktabs} %belle tabelle
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}} %\ra{distanza tra le righe - 1.2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%
+%\RequirePackage[]{front-th} %Frontespizio
+%%%PARTE PRINCIPALE (\dashint)
+\def\Xint#1{\mathchoice
+   {\XXint\displaystyle\textstyle{#1}}%
+      {\XXint\textstyle\scriptstyle{#1}}%
+         {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+	    {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+	       \!\int}
+	       \def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$}
+	            \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+		    \def\ddashint{\Xint=}
+		    \def\dashint{\Xint-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frenchspacing
+\usetikzlibrary{arrows,decorations.markings,decorations.pathmorphing,shapes.geometric}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%COLORI UNIMI
+\definecolor{BluAteneo}{HTML}{003366} %Pantone 281
+\definecolor{GrigioAteneo}{HTML}{707173} %Pantone Cool Gray 10C
+\definecolor{VerdePino}{HTML}{009933} %Pantone 355
+
+\definecolor{colorOne}{named}{BluAteneo}
+\definecolor{colorTwo}{named}{GrigioAteneo}
+\definecolor{colorThree}{named}{VerdePino} %Colore di facoltà
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%DIAGRAMMI DI FLUSSO
+%https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_3)%E2%80%94Creating_Flowcharts
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, text width=3cm, draw=black, fill=GrigioAteneo!50]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, text width=1cm, draw=black, fill=BluAteneo!50]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, draw=black, fill=VerdePino!50]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, text width=2cm, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Listing
+\RequirePackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single, 
+    breaklines=true, 
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+\renewcommand\lstlistingname{Codice}
+\renewcommand\lstlistlistingname{Elenco dei codici}
+\def\lstlistingautorefname{Codice}
+\lstset{style=mystyle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{tocloft}% http://ctan.org/pkg/tocloft
+\setlength{\cftsecnumwidth}{4em} %spazio tra numero e titolo in toc
+\setlength{\cftfignumwidth}{4em} %Per le figure
+\setlength{\cfttabnumwidth}{4em} %Per le tabelle
+\RequirePackage[sc,center]{titlesec} %titoli di sez &c in smallcap centrato: molto elegante, poco leggibile
+\titlelabel{\thetitle.\quad} %mette il punto dopo il numeretto bello solo se non ci sono capitoli
+%\titleformat*{\paragraph}{\raggedright\bfseries}
+%\RequirePackage[bf,sc,center]{titlesec} %titoli di sez &c in smallcap grassetto centrato: molto elegante, poco leggibile
+\RequirePackage{lettrine} %lettera grande  https://texdoc.org/serve/lettrine.pdf/0
+\newcommand{\figura}{{\color{orange} FIGURA}} %Per indicare che va fatta e linkata una figura
+\newcommand{\tabella}{{\color{orange} TABELLA}} %Per indicare che va fatta e linkata una tabella

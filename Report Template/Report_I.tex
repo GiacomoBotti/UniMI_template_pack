@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+%\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{gbottieng}
+\usepgfplotslibrary{groupplots}
+%\usetikzlibrary{arrows.meta}
+\pgfplotsset{compat=newest}
+%\usepackage{pgfpages}
+\usetikzlibrary{arrows,decorations.markings}
+\usepackage{fancyhdr}
+
+%%%%%%%%%%TEMPLATO UNIMI%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancyhf{}%cancella tutti i campi
+\headsep 1cm %altrimenti si sovrappone il testo alla hdr
+\fancyhead[R]{\thepage}
+\fancyhead[L]{
+   \includegraphics*[width=0.7\textwidth]{marchio-01.eps}% non c'è l'ambiente figure.
+}
+\setlength{\headheight}{52pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{First year report}
+\author{Author, \\ \textbf{tutor}: Tutor, \textbf{co-tutor}: Co-Tutor}
+\date{cycle, years}
+
+\begin{document}
+
+\maketitle\thispagestyle{fancy}
+
+\section*{Section}
+\cite{Conte_Ceotto_formaldehydePESs_2020}
+
+\printbibliography[title=Bibliography] 
+%\nocite{*}
+
+\section*{Other activities done during the three years}
+
+\subsection*{List of attended courses}
+\begin{description}
+\item[Transferable Skills] ``\textit{Fondamenti di Academic Writing}'' (12/01/2021; 14/01/2021)
+\item[PhD Course] ``\textit{Scientific visualization of molecular processes in the cellular environment}'' (2CFU) M.Zopp\`{e}, T.Loni, E.Mastrangelo
+\end{description}
+
+\subsection*{Attended Schools, Congresses and Seminars}
+
+\begin{description}
+\item[Welcome Day] presentation of the PhD course - 27/11/2020
+\item[Chemist's Interaction] ``\textit{The Molecular Universe}'' Prof. Alexander Tielens (Leiden University (NL) / University of Berkeley (US)) - 25/09/2020
+\item[VISTA Seminar] ``\textit{The exact factorization:  A predictive first-principles approach to non-adiabatic dynamics}'' E.K.U. Gross (Hebrew University of Jerusalem); ``\textit{Trajectory surface hopping for nonadiabatic dynamics of resonances}'' Kossoski, Barbatti (Aix-Marseille University and Universite Paul Sabatier, France) - 07/01/2021
+
+\item[VWSCC 2021] ``\textit{Simulating Two-Dimensional Electronic Spectra}'' Professor Ivan Rivalta (University of Bologna, Italy) - 15/02/2021
+
+\item[Workshop] Springer Nature Author Workshop OA - 27/05/2021
+\end{description}
+
+\begin{flushleft}
+Date \today
+\end{flushleft}
+
+HERE GOES SIGNATURE
+% \begin{figure}[!htbp]
+%   \includegraphics[width=0.5\textwidth,keepaspectratio]{signature.pdf}
+% \end{figure}
+
+\end{document}
