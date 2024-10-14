@@ -1,0 +1,310 @@
+%UNOFFICIAL BEAMER TEMPLATE FOR 
+%Università degli Studi di Milano
+%By Giacomo Botti
+%write at giacomo.botti@unimi.it
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{unimibeamer}
+
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{mathrsfs}
+\RequirePackage{siunitx}
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \cal{cal} 
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \arbitrary{arb.u.} 
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \deg{deg} 
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \atmosphere{atm}
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \atomicunittime{aut} 
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \atomicunit{au}
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \angstrom{\text{Å}}
+   \DeclareSIUnit[number-unit-product = {\,}]
+   \hartree{\text{\ensuremath{E}}_{\mathrm{h}}}
+\RequirePackage{multirow}
+\RequirePackage{amsfonts}
+\RequirePackage{dsfont}
+\RequirePackage{pgfplots}
+\RequirePackage{chemfig}
+\RequirePackage[version=3]{mhchem}
+\RequirePackage{caption} 
+\RequirePackage{epigraph}
+\RequirePackage{makeidx}
+\RequirePackage{changepage} %\begin{adjustwidth}{*cm}{*cm}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{listings}
+\RequirePackage{tikz}
+\RequirePackage{geometry} %Forza le dimensioni del paper
+\RequirePackage{mathtools}
+   \DeclarePairedDelimiter\bra{\langle}{\rvert}
+   \DeclarePairedDelimiter\ket{\lvert}{\rangle}
+   \DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1 \delimsize\vert #2}
+\RequirePackage[section]{placeins} %Evita che le figure vadano fuori sezione
+\RequirePackage{appendixnumberbeamer} %Non conta le slides dopo \appendix nel computo
+%%%PARTE PRINCIPALE (\dashint)
+\def\Xint#1{\mathchoice
+   {\XXint\displaystyle\textstyle{#1}}%
+      {\XXint\textstyle\scriptstyle{#1}}%
+         {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+	    {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+	       \!\int}
+	       \def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$}
+	            \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+		    \def\ddashint{\Xint=}
+		    \def\dashint{\Xint-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIBLIOGRAFIA
+\RequirePackage[backend=biber,style=chem-acs,sorting=none]{biblatex}
+\RequirePackage{csquotes}
+\addbibresource{export.bib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frenchspacing
+\usetikzlibrary{decorations.pathmorphing,shapes}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%% COLORI %%%
+
+%Unimi palette
+\definecolor{BluAteneo}{HTML}{003366} %Pantone 281
+\definecolor{GrigioAteneo}{HTML}{707173} %Pantone Cool Gray 10C
+%Studi Umanistici
+\definecolor{GrigioTortora}{HTML}{CCCCCC} %Pantone 413
+\definecolor{GrigioTortoraScuro}{HTML}{999999} %Pantone 414
+%Scienze Motorie
+\definecolor{Giallo}{HTML}{FDCC2B} %Pantone 7406
+\definecolor{GialloScuro}{HTML}{CC9933} %Pantone 117
+%Scienze del farmaco
+\definecolor{Arancio}{HTML}{FF6600} %Pantone 114
+\definecolor{ArancioScuro}{HTML}{BE4701} %Pantone 1525
+%Medicina e Chirurgia
+\definecolor{Rosso}{HTML}{FF3300} %Pantone 485
+\definecolor{RossoScuro}{HTML}{CC0000} %Pantone 484
+%Medicina Veterinaria
+\definecolor{Bordeaux}{HTML}{990000} %Pantone 1805
+\definecolor{BordeauxScuro}{HTML}{660000} %Pantone 1815
+%Giurisprudenza
+\definecolor{Blu}{HTML}{0066CC} %Pantone 2945
+\definecolor{BluScuro}{HTML}{003399} %Pantone 294
+%Scienze Politiche Economiche e Sociali
+\definecolor{Azzurro}{HTML}{0099CC} %Pantone PROCESS BLUE C
+\definecolor{AzzurroScuro}{HTML}{006699} %Pantone 308
+%Scienze Agrarie e ALimentari
+\definecolor{VerdeMela}{HTML}{99CC00} %Pantone 376
+\definecolor{VerdeMelaScuro}{HTML}{669900} %Pantone 369
+%Scienze e tecnologie palette
+\definecolor{VerdePino}{HTML}{009933} %Pantone 355
+\definecolor{VerdePinoScuro}{HTML}{006633} %Pantone 349
+%Scienze della Mediazione Linguistica e Culturale
+\definecolor{VerdeMarino}{HTML}{43B39D} %Pantone 326
+\definecolor{VerdeMarinoScuro}{HTML}{379A87} %Pantone 321
+
+%Variabili di comodità
+\definecolor{colorOne}{named}{BluAteneo}
+\definecolor{colorTwo}{named}{GrigioAteneo}
+\definecolor{colorThree}{named}{VerdePino} %Colore di facoltà
+
+
+%%TEMPLATO
+
+\mode<presentation>
+
+\setbeamertemplate{navigation symbols}{} %Toglie i simboli di navigazione
+
+%VEDERE BEAMER APPEAREANCE CHEAT SHEET
+%
+%%% ORIGINAL BOTTI %%%%%%%%%
+%\usefonttheme{structuresmallcapsserif} %Small cap for structure
+%\usefonttheme{serif} 
+%%%%% SANS SERIF BOTTI %%%%%%%
+\usefonttheme{default} %corpo sans serif
+\usefonttheme{structurebold} %titoli bold sans serif
+%\usefonttheme{professionalfonts} %formule come latex
+\useinnertheme{rectangles}
+\useoutertheme{sidebar}
+\usecolortheme{sidebartab}
+
+\makeatletter
+
+%SIDEBAR - BARRA LATERALE
+\setbeamercolor{sidebar left}{bg=colorOne} %colore della barra laterale
+\setbeamercolor{section in sidebar}{fg=colorOne,bg=white} %Selezionati
+\setbeamercolor{section in sidebar shaded}{fg=white} %Non selezionati
+\setbeamertemplate{sidebar}{\insertsection} %sezioni in barra laterale
+
+%ITEMIZE - ENUMERATE - DESCRIPTION
+\setbeamercolor{itemize item}{fg=colorThree} %colore dei punti
+\setbeamercolor{itemize subitem}{fg=colorThree} %colore dei sottopunti
+\setbeamertemplate{enumerate items}[circle]
+\setbeamercolor{item projected}{bg=colorThree} %colore background delle numerazioni
+\setbeamercolor{description item}{fg=colorOne} %colore item descrizioni
+
+%TITLEPAGE COLORS
+
+\setbeamercolor{title}{bg=white,fg=colorOne}
+\setbeamercolor{subtitle}{bg=white,fg=colorTwo}
+\setbeamercolor{date}{bg=white,fg=colorTwo}
+\setbeamercolor{title in sidebar}{bg=white,fg=white}
+\setbeamercolor{author in sidebar}{bg=white,fg=colorTwo!50!white}
+
+%TITLEPAGE
+
+\setbeamertemplate{title page}
+{
+   %\vbox{}
+   %\vfill
+   \hspace*{-0.5\beamer@sidebarwidth}
+   \begin{minipage}[c][\textheight]{\textwidth}
+   \begin{centering}
+    %\vspace{-40pt}
+    \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par
+    
+    \begin{tikzpicture}
+    \centering
+    \draw[color=colorThree,thick]
+    (-4,0)--(4,0);
+    \end{tikzpicture}
+    
+     \vskip2em\par%
+     \begin{beamercolorbox}[sep=8pt,center]{title}
+       \usebeamerfont{title}\inserttitle\par%
+       \ifx\insertsubtitle\@empty%
+       \else%
+         \vskip0.25em%
+         {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+       \fi%     
+     \end{beamercolorbox}%
+    \vskip2.25em%
+    
+    % \vskip1em\par
+     \begin{beamercolorbox}[sep=8pt,center]{author}
+       \usebeamerfont{author}\insertauthor
+     \end{beamercolorbox}
+      \vspace{-10pt}
+     \begin{beamercolorbox}[sep=8pt,center]{institute}
+       \usebeamerfont{institute}\insertinstitute
+     \end{beamercolorbox}
+     \begin{beamercolorbox}[sep=8pt,center]{date}
+       \usebeamerfont{date}\insertdate
+     \end{beamercolorbox}\vskip0.5em
+   \end{centering}
+   \vfill
+   \end{minipage}
+}
+
+%BLOCKS
+\setbeamercolor{block title}{bg=white,fg=colorOne} %Colore titolo blocco
+\setbeamercolor{block title example}{bg=white,fg=colorThree} %Colore titolo blocco esempio
+\setbeamercolor{block title alerted}{bg=white,fg=colorTwo} %Colore titolo blocco alert
+
+%FOOTNOTES
+%\setbeamertemplate{footnote}{{\insertfootnotemark}\footnotesize\insertfootnotetext\par} %nota normale
+\setbeamertemplate{footnote}{\footnotesize\insertfootnotetext\par} %nota senza numero e senza indentatura
+%BIBLIOGRAPHY ENTRIES
+\setbeamercolor{bibliography item}{fg=black}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+
+%FONTS
+\setbeamerfont{author}{size=\large, series=\normalfont}
+%\setbeamerfont{title}{size=\Large, series=\bfseries} %original
+\setbeamerfont{title}{size=\large, series=\bfseries}
+\setbeamerfont{subtitle}{size=\large, series=\normalfont}
+\setbeamerfont{date}{size=\small, series=\normalfont}
+
+
+
+%Frame title with frame numbers
+\setbeamertemplate{frametitle}
+{%
+    \nointerlineskip%
+    \ifbeamer@plainframe%
+      \hbox{\usebeamercolor[bg]{frametitle}%
+        \@tempdima\paperwidth\advance\@tempdima-\beamer@sidebarwidth
+        \hskip-\beamer@leftmargin\vrule height\beamer@headheight width\@tempdima\hskip-\beamer@rightmargin}%
+      \nointerlineskip%
+    \fi%
+    \vskip-\beamer@headheight%
+    \vbox to \beamer@headheight{%
+      \vfil
+      \leftskip=-\beamer@leftmargin%
+      \advance\leftskip by0.3cm%
+      \rightskip=-\beamer@rightmargin%
+      \advance\rightskip by0.3cm plus1fil%
+      {\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\strut\insertframetitle {\scriptsize \hfill \insertframenumber/\inserttotalframenumber \hspace*{3pt}}\par}%
+      \ifx\insertframesubtitle\@empty\else%
+        {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\strut\insertframesubtitle\par}%
+      \fi%
+      \vbox{}%
+      \vskip-1em%
+      \vfil
+    }%
+}
+
+%[sidebar]{\insertframetitle {\scriptsize \hfill \insertframenumber/\inserttotalframenumber \hspace*{3pt}}}
+
+\newcommand{\Unimithankswhite}{
+\begingroup
+  \begin{frame}[plain]{}
+    \hspace*{-0.5\beamer@sidebarwidth}
+    \begin{minipage}[c][\textheight]{\textwidth}
+    \centering
+      \usebeamercolor[fg]{normal text}
+      \centering
+      \vspace*{\fill}
+      \Huge {Thank you for listening! \\[1cm] Please ask your questions}
+      \vspace*{\fill}
+    \end{minipage}
+  \end{frame}
+\endgroup
+}
+
+\newcommand{\Unimithankscolor}{
+\begingroup
+  \setbeamercolor{background canvas}{bg=colorOne}
+  \begin{frame}[plain]{}
+    \hspace*{-0.5\beamer@sidebarwidth}
+    \begin{minipage}[c][\textheight]{\textwidth}
+    \centering
+      \usebeamercolor[white]{normal text}
+      \centering
+      \vspace*{\fill}
+      \Huge {Thank you for your attention! \\[1cm] Please ask your questions}
+      \vspace*{\fill}
+    \end{minipage}
+  \end{frame}
+\endgroup
+}
+
+\newcommand{\Unimithanksfunny}[3]{
+\begingroup
+  \begin{frame}[plain]{}
+    \hspace*{-0.5\beamer@sidebarwidth}
+    \begin{minipage}[c][\textheight]{\textwidth}
+    \centering
+      \usebeamercolor[white]{normal text}
+      \centering
+      \vspace*{\fill}
+    \animategraphics[loop,width=0.5\textwidth,autoplay]{10}{#1}{#2}{#3}
+      \vspace*{\fill}
+    \end{minipage}
+  \end{frame}
+\endgroup
+}
+
+\makeatother
+
+\mode<all>
