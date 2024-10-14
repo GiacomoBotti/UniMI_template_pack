@@ -1,0 +1,70 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+\usetheme{default}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{unimibeamer}
+\usepackage{hanging}
+\usepackage{animate} %https://latex-beamer.com/tutorials/gif-latex-beamer/
+
+\pgfplotsset{compat=1.18}
+
+\author[Autore]{Autore}
+\title[Titolo]{Titolo}
+\subtitle{Sottotitolo}
+\logo{\includegraphics[scale=0.5]{ATENEO-logo.eps}}  %logo nella barra del menù
+\titlegraphic{\includegraphics[width=0.4\textwidth]{ATENEO-07.eps}} %Logo nel frontespizio
+%\institute[UniMI]{Universit\'a degli Studi Milano} 
+\date{AA 2020/21} 
+
+\begin{document}
+
+%ATTENTION: for the right faculty color, modify colorThree in the .sty file
+
+%This frame HAS TO be plain
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\section[Sezione]{Sezione}
+
+\begin{frame}{Frame Title}
+
+\begin{columns}
+\column{0.45\textwidth}
+\begin{exampleblock}{Example Block Title}
+\begin{itemize}
+\item Item
+\end{itemize}
+\end{exampleblock}
+
+\begin{block}{Block title}
+\begin{enumerate}
+    \item Item
+\end{enumerate}
+\end{block}
+
+\begin{alertblock}{Alert Block Title}
+\begin{description}
+\item[Bla] bla bla
+\end{description}
+
+\end{alertblock}
+\column{0.45\textwidth}
+\[
+I_{qct}(E) = \frac{1}{2T} \left\vert \int_{0}^{T} dt \, e^{iEt/\hbar} p (t) \right\vert^{2}
+\]
+\end{columns}
+\end{frame}
+
+\Unimithankswhite
+\Unimithankscolor
+\Unimithanksfunny{gif-png/frame-}{0}{6}
+
+\appendix
+
+\begin{frame}{Appendix}
+    
+\end{frame}
+
+
+\end{document}
