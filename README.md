@@ -7,3 +7,7 @@ Some $\LaTeX$ and Beamer knowledge is required. See the the style files for addi
 
 # Thanks
 * **Blair J. Rossetti**, for his Emory Theme that I modified to obtained the UniMI poster template
+* **UniMI**, for sharing its visual identity guidelines
+* **IBM**, for the colorblind palette
+* **Università di Perugia**, for sharing its visual identity guidelines
+* **Sorbonne Université**, for sharing its visual identity guidelines
